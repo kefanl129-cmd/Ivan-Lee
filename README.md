@@ -1,90 +1,231 @@
-# Three Brothers Investment Strategy Simulation
+# 🍵 Matcha Quant AI · Behavioral Risk Control Agent
 
-> In turbulent markets, discipline and patience matter more than prediction.  
-> Survival is the first alpha.
+##  Overview
 
-Life is a game,just enjoy it.
+**Matcha Quant AI** is a quantitative research prototype that integrates:
 
-## Introduction
+*  Financial market data analysis
+*  Behavioral finance (emotion-aware risk control)
+*  AI Agent architecture
 
-This project explores decision-making under uncertainty using a Monte Carlo simulation framework.
+Unlike traditional trading systems that focus on prediction, this project emphasizes:
 
-It does not attempt to predict markets, but to compare how different risk preferences affect long-term outcomes.
-
-Key insights:
-- Survival matters more than short-term returns
-- High returns are meaningless without risk control
-- Compounding requires avoiding ruin
-
-
-
-## Model Overview
-
-Three stylized investment strategies are simulated:
-
-### Eldest (Stability)
-- Low return, low volatility
-- Focus on capital preservation
-
-### Second (Growth)
-- Moderate return and risk
-- Balanced compounding behavior
-
-### Third (High Risk)
-- High return, high volatility
-- Subject to ruin (wealth can drop to zero)
-
-Yesterday is a history,tomorrow is a riddle.Today is a gift.
-
-## Model Dynamics
-
-Wealth evolves as:
-
-\[
-W_{t+1} = W_t (1 + \mu + \sigma Z_t), \quad Z_t \sim \mathcal{N}(0,1)
-\]
-
-For the high-risk strategy:
-- Wealth is absorbed at zero upon ruin
+> **Constraining irrational human decision-making under uncertainty.**
 
 ---
 
-## Parameters
+##  Motivation
 
-| Parameter | Value |
-|----------|------|
-| T | 200 |
-| N | 100 |
-| W0 | 1 |
+In real-world trading environments, three major issues frequently arise:
 
-### Strategy Parameters
+### 1. Emotion-Driven Decisions
 
-| Strategy | μ | σ |
-|----------|--|--|
-| Eldest | 0.001 | 0.003 |
-| Second | 0.004 | 0.015 |
-| Third | 0.009 | 0.090 |
+* Panic selling
+* Overconfidence
+* Greed-driven overexposure
+
+### 2. Misunderstanding of Risk
+
+Most systems focus on returns while ignoring:
+
+* Drawdowns
+* Tail risks
+* Blow-up probability
+
+### 3. Fragmented Information
+
+Market signals are scattered across:
+
+* Price data
+* News
+* Macro signals
 
 ---
 
-## Outputs
+##  System Architecture
 
-- Mean wealth trajectories
-- Log-scale comparison
-- Sample path simulation
-- Survival probability of high-risk strategy
+```text
+User Input
+    ↓
+Behavioral Layer (Emotion Detection)
+    ↓
+Market Data Layer (Yahoo Finance)
+    ↓
+Risk Engine (VaR / CVaR / Sharpe)
+    ↓
+Position Sizing (Kelly-lite)
+    ↓
+Decision Engine (Rule-based)
+    ↓
+Execution Layer (Simulated Broker)
+```
 
 ---
 
-## Key Metric
+##  Core Components
 
-```matlab
-survival_rate_3 = mean(wealth_paths_3(:,end) > 0);
-If you're reject,accept it;if you are default,enjoy if.It's a interesting period.
+###  1. Behavioral Finance Layer
 
+The system detects emotional states using NLP + rule-based logic:
 
+* **Panic**
+* **Greed**
+* **Overconfidence**
 
+When high-risk emotional states are detected:
 
+>  Trading decisions are restricted
+
+---
+
+###  2. Risk Engine
+
+Key quantitative metrics:
+
+* **Sharpe Ratio** → risk-adjusted return
+* **VaR (Value at Risk)** → potential loss threshold
+* **CVaR (Conditional VaR)** → tail risk expectation
+* **Max Drawdown** → worst historical loss
+
+Additionally:
+
+* Monte Carlo simulation estimates probability distributions
+
+---
+
+###  3. Position Sizing (Kelly-lite)
+
+Position sizing is derived from volatility:
+
+```text
+Position Size ∝ Capital × Risk Budget / Volatility
+```
+
+This ensures:
+
+> Risk exposure is controlled systematically, not emotionally
+
+---
+
+###  4. Decision Engine
+
+Rule-based logic evaluates:
+
+* Emotional state
+* Risk metrics
+* Market conditions
+
+Outputs include:
+
+* `NO TRADE`
+* `AVOID`
+* `REDUCE RISK`
+* `TRADE (LOW SIZE)`
+
+---
+
+###  5. Execution Layer (Simulated Broker)
+
+* Paper trading environment
+* Mimics real execution flow
+* Easily extendable to broker APIs
+
+---
+
+## Features
+
+*  Multi-market support (US / CN / HK / JP / SG)
+*  Emotion-aware trading constraints
+*  Quantitative risk modeling
+*  Monte Carlo risk simulation
+*  Kelly-based position sizing
+*  Rule-based decision engine
+*  Simulated trading execution
+
+---
+
+##  Limitations
+
+* No real-time tick-level data
+* No machine learning prediction models
+* Simplified emotion analysis (rule-based + TextBlob)
+* Monte Carlo assumes normal distribution
+
+---
+
+##  Project Positioning
+
+This project is **NOT**:
+
+*  A trading bot
+*  A profit prediction system
+
+This project **IS**:
+
+> ✔ A **Quantitative Risk-Control AI Agent Prototype**
+> ✔ A **Behavioral Finance Decision Constraint System**
+
+---
+
+##  Key Insight
+
+Traditional systems ask:
+
+> “What will the market do?”
+
+This system asks:
+
+> **“Given uncertainty, how should humans behave?”**
+
+---
+
+##  Future Work
+
+Potential upgrades:
+
+* Backtesting engine
+* Multi-asset portfolio optimization
+* ML-based return prediction
+* LLM-driven strategy generation
+* Real broker API integration
+
+---
+
+##  Conclusion
+
+**Matcha Quant AI** demonstrates a shift in perspective:
+
+> From predicting markets → to managing decision risk.
+
+It provides a structured framework for:
+
+* Rational decision-making
+* Risk-aware trading behavior
+* AI-assisted financial analysis
+
+---
+
+##  Author
+
+* Independent developer
+* Focus: AI systems + Quantitative modeling + Behavioral finance
+
+---
+
+## Acknowledgement
+
+Built using:
+
+* Python
+* Streamlit
+* yfinance
+* NumPy / Pandas
+
+---
+
+##  License
+
+MIT License (recommended)
 
 Conclusion:
 
