@@ -1,75 +1,61 @@
-# BDC2026 Quantitative Trading Model
+ BDC2026 Quantitative Trading Model
 
-## 1. Overview
+1. Overview
 
 This project builds a cross-sectional stock selection model to predict
 5-day forward returns of CSI300 stocks.
 
----
 
-## 2. Model
+2. Model
 
-- LightGBM regression model
-- Cross-sectional normalization
-- IC-based feature evaluation
-- Softmax portfolio allocation
+LightGBM regression model
+Cross-sectional normalization
+IC-based feature evaluation
+Softmax portfolio allocation
 
----
+3. Features
 
-## 3. Features
+mom5 (5-day momentum)
+mom10 (10-day momentum)
+vol (volatility)
+rev (mean reversion)
+liq (liquidity proxy)
 
-- mom5 (5-day momentum)
-- mom10 (10-day momentum)
-- vol (volatility)
-- rev (mean reversion)
-- liq (liquidity proxy)
 
----
+4. Methodology
 
-## 4. Methodology
-
-### 4.1 Feature Engineering
+4.1 Feature Engineering
 Time-series transformation applied per stock.
 
-### 4.2 Target
+4.2 Target
 5-day forward return.
 
-### 4.3 IC-based weighting
+4.3 IC-based weighting
 Feature importance estimated via correlation with target.
 
----
-
-## 5. Training Process
+5. Training Process
 
 bash train.sh
 
----
-
-## 6. Inference Process
+6. Inference Process
 
 bash test.sh
 
----
-
-## 7. Output Format
+7. Output Format
 
 stock_id,weight
 
 Sum(weight) <= 1
 
----
+8. Reproducibility
 
-## 8. Reproducibility
+fixed random seed = 42
+no external data sources
+no online dependency
+deterministic pipeline
 
-- fixed random seed = 42
-- no external data sources
-- no online dependency
-- deterministic pipeline
+9. Runtime Constraints
 
----
-
-## 9. Runtime Constraints
-
-- Training time < 8 hours
-- Prediction time < 5 minutes
-- Memory < 16GB
+Training time < 8 hours
+Prediction time < 5 minutes
+Memory < 16GB
